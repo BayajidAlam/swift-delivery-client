@@ -1,9 +1,22 @@
 import React, { useContext } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import Img from "../../assets/swift.png";
 import { AuthContext } from "../../Context/AuthProvider";
 const Header = () => {
-  const { user } = useContext(AuthContext);
+
+  const { user, logOutUser } = useContext(AuthContext);
+  
+  const handleLogOut = () => {
+    logOutUser()
+    .then(()=> {
+      toast.success('User logOut successfully!')
+    })
+    .catch(error=>{
+      toast.error(error.message)
+    })
+  }
+
   return (
     <div className="navbar bg-slate-300 mt-0 rounded">
       <div className="navbar-start">
@@ -34,7 +47,7 @@ const Header = () => {
             </Link>
             <li>My review</li>
             <li>Add services</li>
-            <button>LogOut</button>
+            <button onClick={handleLogOut}>LogOut</button>
           </ul>
         </div>
 
@@ -63,8 +76,10 @@ const Header = () => {
         )}
       </div>
       <div className="navbar-end">
-        <p className="btn bg-orange-400 border-0">logout</p>
+        
+        <button onClick={handleLogOut} className="btn bg-orange-400 border-0">logout</button>
       </div>
+      <Toaster/>
     </div>
   );
 };
