@@ -22,7 +22,7 @@ const ServiceInHome = () => {
     </div>
     <div className='text-center mb-3'>
         <Link to='/services'>
-        <button className='btn-outline px-5 py-2 bg-orange-400 text-2xl rounded-md my-4'>See all services</button>
+        <button className='btn-outline px-5 py-2 bg-orange-500 text-2xl rounded-md my-4'>See all services</button>
         </Link>
       </div>
   </div>
