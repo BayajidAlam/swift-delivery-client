@@ -7,7 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const SignUp = () => {
 
-  const { handleSignup } = useContext(AuthContext)
+  const { handleSignup, signInWithGoogle } = useContext(AuthContext)
   const handleSubmit = (event) => {
     event.preventDefault()
     const form = event.target
@@ -26,7 +26,19 @@ const SignUp = () => {
       toast.error(error.message)
     })
   }
-
+  // sign in with google 
+  const handleSignInWithGoogle = () => {
+    signInWithGoogle()
+    .then(result => {
+      const user = result.user 
+      console.log(user);
+      toast.success('Sign in Successfully!')
+    })
+    .catch(error=>{
+      toast.error(error.message)
+    })
+  }
+   
   return (
     <div className="hero  bg-slate-300 my-3 rounded-lg">
 
@@ -86,7 +98,7 @@ const SignUp = () => {
             <div className="text-center ">
               <p className="text-indigo-400 my-2">Or Sign In with</p>
              <div className="flex justify-center ">
-             <FaGoogle className="text-3xl mr-4"/>
+             <FaGoogle onClick={handleSignInWithGoogle} className="text-3xl mr-4"/>
               <FaFacebook className="text-3xl"/>
              </div>
             </div>
