@@ -21,6 +21,7 @@ const Login = () => {
       const user = result.user 
       console.log(user);
       toast.success('User log in successfully!')
+      form.reset()
     })
     .catch(error=>{
     const errorMessage = error.message;
