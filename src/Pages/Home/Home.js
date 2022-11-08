@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from '../../Components/Banner/Banner';
 import ServiceInHome from './ServiceInHome/ServiceInHome';
 import './Home.css'
+import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <div>
@@ -14,13 +15,15 @@ const Home = () => {
           <h1 className='text-6xl font-bold'>Explore Our <span className='text-orange-400 text-6xl font-bold'>Services</span></h1>
           <p className='text-3xl w-9/12 mt-8 font-semibold'>Swift Delivery Is Number One Bangladeshi delivery service,We Provide Fastest Delivery Ever.</p>
         </div>
-        <button className='w-[350px] h-[100px] rounded-lg p-5 text-3xl bg-orange-400 text-white font-samibold' >Explore More</button>
+        <Link to='/services'>
+        <button className='w-[300px] h-[80px] rounded-lg p-5 text-3xl bg-orange-400 text-white font-samibold' >Explore More</button>
+        </Link>
        </div>
       </section>
 
       <ServiceInHome></ServiceInHome>
     
-      <section className='flex justify-center section-2  items-center'>
+      <section className='flex justify-center section-2  items-center mb-5'>
           <div className='text-center'>
           <h1 className='text-3xl text-white font-bold'>Swift Delivery</h1>
           <p className='text-white text-4xl font-bold mt-5
