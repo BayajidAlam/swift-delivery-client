@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import img from '../../assets/Login.jpg'
 import { FaFacebook, FaGoogle } from "react-icons/fa";
+import { AuthContext } from "../../Context/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
+
+  const { SignInUser } = useContext(AuthContext)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const form = event.target
+    const email =form.email.value
+    const password = form.password.value 
+    console.log(email,password)
+    // sign in user 
+    SignInUser(email,password)
+    .then(result =>{
+      const user = result.user 
+      console.log(user);
+      toast.success('User log in successfully!')
+    })
+    .catch(error=>{
+    const errorMessage = error.message;
+      toast.error(errorMessage)
+    })
+  }
   return (
     <div className="hero  bg-slate-300 my-3 rounded-lg">
 
@@ -16,15 +39,18 @@ const Login = () => {
         <div className="card w-1/2 h-[450px]  shadow-2xl bg-base-100">
           <div className="card-body w-3/4 mx-auto">
           <p className="text-center text-3xl">Login</p>
-            <div className="form-control">
+         <form onSubmit={handleSubmit}>
+           
+         <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                type="email"
                 name='email'
                 placeholder="email"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -36,6 +62,7 @@ const Login = () => {
                 name='password'
                 placeholder="password"
                 className="input input-bordered"
+                required
               />
               <label className="label">
                   <p>Don't have account?<Link className="text-indigo-400" to='/signup'>Sign Up</Link></p>
@@ -51,6 +78,8 @@ const Login = () => {
                </div>
               </div>
             </div>
+         </form>
+         <Toaster/>
           </div>
         </div>
       </div>

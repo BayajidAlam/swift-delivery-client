@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import img from '../../assets/signup.jpg'
+import { AuthContext } from '../../Context/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
 
 const SignUp = () => {
 
+  const { handleSignup } = useContext(AuthContext)
   const handleSubmit = (event) => {
     event.preventDefault()
     const form = event.target
     const name = form.name.value 
     const email =form.email.value
     const password = form.password.value 
-    
+
+    // create user 
+    handleSignup(email,password)
+    .then(result=>{
+      const user = result.user
+      console.log(user)
+      toast.success('User created successfully!')
+    })
+    .catch((error)=>{
+      toast.error(error.message)
+    })
   }
 
   return (
@@ -79,7 +92,7 @@ const SignUp = () => {
             </div>
           </div>
       </form>
-
+          <Toaster/>
         </div>
       </div>
     </div>
