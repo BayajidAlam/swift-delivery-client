@@ -31,9 +31,9 @@ const ServiceDetails = () => {
           user?.email? 
           <>
             <div className='w-3/4 mx-auto rounded-lg bg-slate-200 p-5'>
-            <p className=' p-3 text-xl'>User email: {user.email}</p>
-            <p className=' p-3 text-xl'>Service id: {_id}</p>
-            <textarea name="" className='h-40 w-96 ml-80 rounded-xl' placeholder='type your comment here'></textarea>
+            <p className='ml-6 p-3 text-xl'><span className='text-2xl font-bold'>User email:</span> {user.email}</p>
+            <p className='ml-6 p-3 text-xl'><span className='text-2xl font-bold'>Service id:</span> {_id}</p>
+            <textarea name="review" className='h-40 w-96 ml-80 rounded-xl mt-3' placeholder='type your comment here'></textarea>
             <br />
             <div className='text-center'>
             <button className='bg-indigo-300 p-3  text-2xl rounded-md'>Add review</button>
