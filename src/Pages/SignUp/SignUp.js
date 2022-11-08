@@ -2,7 +2,18 @@ import React from 'react';
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import img from '../../assets/signup.jpg'
+
 const SignUp = () => {
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const form = event.target
+    const name = form.name.value 
+    const email =form.email.value
+    const password = form.password.value 
+    
+  }
+
   return (
     <div className="hero  bg-slate-300 my-3 rounded-lg">
 
@@ -15,8 +26,9 @@ const SignUp = () => {
       <div className="card w-1/2 h-[550px]  shadow-2xl bg-base-100">
         <div className="card-body w-3/4 mx-auto">
         <p className="text-center text-3xl">Sign Up</p>
-
-          <div className="form-control">
+      <form onSubmit={handleSubmit}>
+        
+      <div className="form-control">
             <label className="label">
               <span className="label-text">Name</span>
             </label>
@@ -56,16 +68,17 @@ const SignUp = () => {
             </label>
           </div>
 
-          <div className="form-control mt-2">
+          <div className="form-control mt-4">
             <button type="submit" className="btn btn-primary">Login</button>
             <div className="text-center ">
-              <p className="text-indigo-400 text-xl my-2">Or Sign In with</p>
+              <p className="text-indigo-400 my-2">Or Sign In with</p>
              <div className="flex justify-center ">
              <FaGoogle className="text-3xl mr-4"/>
               <FaFacebook className="text-3xl"/>
              </div>
             </div>
           </div>
+      </form>
 
         </div>
       </div>
