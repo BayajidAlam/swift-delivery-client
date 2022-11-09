@@ -45,8 +45,8 @@ const Header = () => {
             <Link to="/services">
               <li>Services</li>
             </Link>
-            <li>My review</li>
-            <li>Add services</li>
+            <li><Link to='/myreview'>My review</Link></li>
+            <li><Link to='/addservice'>Add services</Link></li>
             <button onClick={handleLogOut}>LogOut</button>
           </ul>
         </div>
@@ -65,10 +65,10 @@ const Header = () => {
           >
             Services
           </Link>
-            <Link className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white ml-3">
+            <Link to='/myreview' className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white ml-3">
               My review
             </Link>
-            <Link className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white ml-3">
+            <Link to='/addservice' className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white ml-3">
               Add services
             </Link>
           </>

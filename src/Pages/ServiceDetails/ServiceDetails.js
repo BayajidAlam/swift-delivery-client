@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
+import Review from '../../Components/Review/Review';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const ServiceDetails = () => {
@@ -8,22 +9,31 @@ const ServiceDetails = () => {
   const service = useLoaderData()
   const { _id,image, name, discription, price} = service
   const { user } = useContext(AuthContext)
+  const [ reviews, setReviews ] = useState([])
   
-
   const handleAddReview = (event) => {
     event.preventDefault()
     const form = event.target;
     const message = form.review.value
-    
+    let photo = user?.photoURL
+    let userName = user?.displayName
+    if(user?.photoURL === null){
+    photo = "https://i.postimg.cc/mrB4CYTC/Max-R-Headshot-1.jpg"
+    }
+    if(userName === null){
+      userName = "User"
+    }
     const review = {
       service : _id,
       serviceName : name,
-      reviewerName : user.displayName,
-      reviewerEmail : user.email,
-      reviewerImage : user.photoURL,
+      reviewerName : userName,
+      reviewerEmail : user?.email,
+      reviewerImage : photo,
       review : message
     }
-    
+ 
+  
+ 
     // send review to server 
     fetch('http://localhost:5000/reviews',{
       method: 'POST',
@@ -40,6 +50,16 @@ const ServiceDetails = () => {
       }
     })
   }
+  
+  useEffect(()=>{
+    fetch(`http://localhost:5000/reviews?name=${name}`)
+  .then(res=>res.json())
+  .then(data=>{
+    console.log(data)
+    setReviews(data)
+  })
+  },[ name])
+
   return (
     <div className=' rounded-lg'>
       <p className='text-center text-3xl mt-3 font-serif text-blue-400 underline'>Service Details</p>
@@ -59,8 +79,19 @@ const ServiceDetails = () => {
       </div>
       </section>
 
-      <section className='bg-slate-300 mb-3'>
-        <p className='mx-auto text-3xl w-48 text-center rounded-lg font-serif text-white bg-indigo-400 mb-3'>User Review</p>
+      <section className='bg-slate-300 mb-3 mt-3 rounded-xl'>
+       <div className='pt-4'>
+       <p className='mx-auto text-3xl w-48 text-center rounded-lg font-serif text-white bg-indigo-400 mb-3'>User Review</p>
+       </div>
+        <div>
+          {
+            reviews.map(review=> <Review
+            key={_id}
+            userReview={review}
+            ></Review>)
+          }
+        </div>
+
        {
           user?.email? 
           <>
