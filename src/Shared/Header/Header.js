@@ -59,6 +59,12 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         {user?.email ? (
           <>
+           <Link
+            className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white ml-3"
+            to="/services"
+          >
+            Services
+          </Link>
             <Link className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white ml-3">
               My review
             </Link>
