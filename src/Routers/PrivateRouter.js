@@ -7,12 +7,12 @@ const PrivateRouter = ({children}) => {
   const { user,loading } = useContext(AuthContext)
   const location = useLocation()
     if(loading){
-      <p className='text-5xl'>Loading</p>
+       return <p className='text-5xl'>Loading</p>
     }
     if(user){
       return children
     }
-    return <Navigate to='/' state={{from: location}} replace></Navigate>
+    return <Navigate to='/' state={{ from: location }} replace></Navigate>
  
 };
 

@@ -31,12 +31,12 @@ const TableRow = ({ singleReview, handleDelete }) => {
       <tbody>
        
         <tr >
-          <th className='w-[15%]'>
+          <th className='w-[10%]'>
             <label>
                   {serviceName}
             </label>
           </th>
-          <td className='w-1/5'>
+          <td className='w-[20%]'>
             <div className="flex items-center ">
               <div className="avatar">
                 <div className="mask mask-squircle w-12 h-12">
@@ -50,16 +50,16 @@ const TableRow = ({ singleReview, handleDelete }) => {
             </div>
           </td> 
 
-          <td className='w-1/5'>
+          <td className='w-[40%]'>
             {
               review
             }
           </td>
 
-          <td className='w-1/5'>
+          <td className='w-[15%]'>
            <img className='h-12 w-12' src={updateIcon} alt="" />
           </td>
-          <th>
+          <th className='w-[15%]'>
             <button onClick={()=>{handleDelete(_id)}} className="text-3xl rounded-full">
                     <FaTrashAlt/>
             </button>

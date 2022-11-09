@@ -47,10 +47,11 @@ const ServiceDetails = () => {
       if(data.acknowledged){
       toast.success('Review added successfully!');
       form.reset()
+      console.log(data);
       }
     })
   }
-
+console.log(reviews)
   useEffect(()=>{
     fetch(`http://localhost:5000/reviews?name=${name}`)
     .then(res=>res.json())
@@ -58,7 +59,7 @@ const ServiceDetails = () => {
     setReviews(data)
   })
   },[ name])
-  
+
   return (
     <div className=' rounded-lg'>
       <p className='text-center text-3xl mt-3 font-serif text-blue-400 underline'>Service Details</p>

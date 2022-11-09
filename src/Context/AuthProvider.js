@@ -5,9 +5,12 @@ import app from '../Firebase/firebase.config';
 export const AuthContext = createContext()
 const auth = getAuth(app)
 const Provider = new GoogleAuthProvider()
+
 const AuthProvider = ({children}) => {
+
   const [ user, setUser ] = useState(null)
   const [ loading, setLoading ] = useState(true)
+  
   // sign in user 
   const handleSignup = (email,password) => {
     setLoading(true)

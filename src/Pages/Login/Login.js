@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import img from '../../assets/Login.jpg'
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider";
@@ -7,14 +7,19 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
 
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+
   const { SignInUser, signInWithGoogle } = useContext(AuthContext)
+
 
   const handleSubmit = (event) => {
     event.preventDefault()
     const form = event.target
     const email =form.email.value
     const password = form.password.value 
-    console.log(email,password)
+    
     // sign in user 
     SignInUser(email,password)
     .then(result =>{
@@ -22,12 +27,14 @@ const Login = () => {
       console.log(user);
       toast.success('User log in successfully!')
       form.reset()
+      navigate(from,{ replace: true })
     })
     .catch(error=>{
     const errorMessage = error.message;
       toast.error(errorMessage)
     })
   }
+
   // sign in with google 
   const handleSignInWithGoogle = () => {
     signInWithGoogle()
@@ -35,12 +42,12 @@ const Login = () => {
       const user = result.user 
       console.log(user);
       toast.success('Sign in Successfully!')
+      navigate(from,{replace: true})
     })
     .catch(error=>{
       toast.error(error.message)
     })
   }
-   
 
   return (
     <div className="hero  bg-slate-300 my-3 rounded-lg">

@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/signup.jpg'
 import { AuthContext } from '../../Context/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
 
 const SignUp = () => {
+
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
 
   const { handleSignup, signInWithGoogle } = useContext(AuthContext)
   const handleSubmit = (event) => {
@@ -22,6 +26,7 @@ const SignUp = () => {
       console.log(user)
       toast.success('User created successfully!')
       form.reset()
+      navigate(from,{replace: true})
     })
     .catch((error)=>{
       toast.error(error.message)
@@ -34,6 +39,7 @@ const SignUp = () => {
       const user = result.user 
       console.log(user);
       toast.success('Sign in Successfully!')
+      navigate(from,{replace: true})
     })
     .catch(error=>{
       toast.error(error.message)
