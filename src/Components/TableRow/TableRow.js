@@ -17,7 +17,7 @@ const TableRow = ({ singleReview, handleDelete }) => {
         <tr>
           <th>
             <label>
-                  Service
+                  Service Name
             </label>
           </th>
           <th>Details</th>

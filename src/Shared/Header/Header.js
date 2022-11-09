@@ -55,6 +55,7 @@ const Header = () => {
           <img className="w-12 h-12  ml-10" src={Img} alt="" />
           <p className="text-4xl font-bold ml-3 p-4">Swift Delivery</p>
         </Link>
+       
       </div>
       <div className="navbar-center hidden lg:flex">
         {user?.email ? (
@@ -73,12 +74,15 @@ const Header = () => {
             </Link>
           </>
         ) : (
+         <>
           <Link
             className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white ml-3"
             to="/services"
           >
             Services
           </Link>
+          <Link to='/blogs' className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white ml-3"> Blogs</Link>
+         </>
         )}
       </div>
       <div className="navbar-end">
