@@ -1,26 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FaTrashAlt } from "react-icons/fa";
 import updateIcon from  '../../assets/update.png'
 
-const TableRow = ({singleReview}) => {
+const TableRow = ({ singleReview, handleDelete }) => {
  
   
   const { _id,review, reviewerEmail, reviewerName, reviewerImage, serviceName } = singleReview;
   console.log(_id)
-
-  
-  const handleDelete = (id) => {
-    const proceed = window.confirm('Are you sure?')
-    if(proceed){
-      fetch(`http://localhost:5000/reviews/${id}`,{
-        method: 'DELETE'
-      })
-      .then(res=>res.json())
-      .then(data=>{
-       console.log(data)
-      })
-    }
-  }
 
   return (
 

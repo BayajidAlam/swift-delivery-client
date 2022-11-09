@@ -50,16 +50,15 @@ const ServiceDetails = () => {
       }
     })
   }
-  
+
   useEffect(()=>{
     fetch(`http://localhost:5000/reviews?name=${name}`)
-  .then(res=>res.json())
-  .then(data=>{
-    console.log(data)
+    .then(res=>res.json())
+    .then(data=>{
     setReviews(data)
   })
   },[ name])
-
+  
   return (
     <div className=' rounded-lg'>
       <p className='text-center text-3xl mt-3 font-serif text-blue-400 underline'>Service Details</p>
