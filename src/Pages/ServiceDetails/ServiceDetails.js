@@ -47,11 +47,10 @@ const ServiceDetails = () => {
       if(data.acknowledged){
       toast.success('Review added successfully!');
       form.reset()
-      console.log(data);
       }
     })
   }
-console.log(reviews)
+
   useEffect(()=>{
     fetch(`http://localhost:5000/reviews?name=${name}`)
     .then(res=>res.json())

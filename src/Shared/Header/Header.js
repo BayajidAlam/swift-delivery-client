@@ -10,7 +10,9 @@ const Header = () => {
   const handleLogOut = () => {
     logOutUser()
     .then(()=> {
-      toast.success('User logOut successfully!')
+      if(user){
+        toast.success('User logOut successfully!')
+      } 
     })
     .catch(error=>{
       toast.error(error.message)
@@ -72,6 +74,7 @@ const Header = () => {
             <Link to='/addservice' className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white ml-3">
               Add services
             </Link>
+            <Link to='/blogs' className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white ml-3"> Blogs</Link>
           </>
         ) : (
          <>

@@ -9,6 +9,7 @@ import Login from "../Pages/Login/Login";
 import MyReview from "../Pages/My review/MyReview";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import SignUp from "../Pages/SignUp/SignUp";
+import UpdateReview from "../Pages/UpdateReview/UpdateReview";
 import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
         {
           path: '/blogs',
           element: <Blogs></Blogs>
+        },
+        {
+          path:'/update/:id',
+          element: <UpdateReview></UpdateReview>,
+          loader:  ({params})=>fetch(`http://localhost:5000/update/${params.id}`)
         }
       ]
     }

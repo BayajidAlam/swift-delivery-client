@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import updateIcon from  '../../assets/update.png'
 
 const TableRow = ({ singleReview, handleDelete }) => {
@@ -55,9 +56,11 @@ const TableRow = ({ singleReview, handleDelete }) => {
               review
             }
           </td>
-
+         
           <td className='w-[15%]'>
-           <img className='h-12 w-12' src={updateIcon} alt="" />
+         <Link to={`/update/${_id}`}>  
+         <img className='h-12 w-12' src={updateIcon} alt="" />
+         </Link>
           </td>
           <th className='w-[15%]'>
             <button onClick={()=>{handleDelete(_id)}} className="text-3xl rounded-full">
