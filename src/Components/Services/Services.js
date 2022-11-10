@@ -6,7 +6,7 @@ import Service from "../Service/Service";
 const Services = () => {
   const [services, setServices] = useState([]);
   const { loading } = useContext(AuthContext);
-
+  
   useTitle("Services");
   useEffect(() => {
     fetch("https://swift-delivery-server.vercel.app/services")
