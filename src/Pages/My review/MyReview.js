@@ -53,11 +53,22 @@ const MyReview = () => {
   return (
     <div>
       {
-        reviews.map(review=><TableRow
-        key={review._id}
-        singleReview={review}
-        handleDelete={handleDelete}
-        ></TableRow>)
+        reviews.length !== 0?
+        <>
+          {
+              reviews.map(review=><TableRow
+                key={review._id}
+                singleReview={review}
+                handleDelete={handleDelete}
+                ></TableRow>)
+          }
+        </>
+        :
+        <>
+        <div className='mt-80 mb-80'>
+          <h1 className='text-center text-3xl'>No reviews were added</h1>
+        </div>
+        </>
       }
     </div>
   );

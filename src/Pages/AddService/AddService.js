@@ -15,16 +15,15 @@ const AddService = () => {
     const price = form.price.value 
     const image = form.url.value  
     const discription = form.description.value 
-    console.log(name,price,image,discription)
-    
+
     const service = {
       image,
       price,
       name,
       discription,
-      data
+      date
     }
-  
+
 
     fetch('http://localhost:5000/services',{
       method:'POST',
