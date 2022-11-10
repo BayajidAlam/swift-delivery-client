@@ -13,14 +13,13 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
   useTitle("Login");
 
-  const { SignInUser, signInWithGoogle, loading } = useContext(AuthContext);
-
+  const { SignInUser, signInWithGoogle, loading,setLoading } = useContext(AuthContext);
+console.log(loading)
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-
     //----------------------------------//
     // sign in user
     SignInUser(email, password)
@@ -42,7 +41,7 @@ const Login = () => {
           .then((res) => res.json())
           .then((data) => {
             localStorage.setItem("swift-token", data.token);
-            console.log(data.token);
+           
           });
         toast.success("User log in successfully!");
         form.reset();
@@ -51,6 +50,7 @@ const Login = () => {
       .catch((error) => {
         const errorMessage = error.message;
         toast.error(errorMessage);
+        setLoading(false)
       });
   };
   //----------------------------------//
