@@ -5,10 +5,11 @@ import Service from '../../../Components/Service/Service';
 const ServiceInHome = () => {
   const [ services, setServices ] = useState([])
   useEffect(()=>{
-    fetch('http://localhost:5000/servicesOfHome')
+    fetch('https://swift-delivery-server.vercel.app/servicesOfHome')
     .then(res=>res.json())
     .then(data=>setServices(data))
   },[])
+
   return (
     <div>
     <h2 className='text-5xl text-center font-semibold'>Our Services {services.length}</h2>

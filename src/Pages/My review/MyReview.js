@@ -10,7 +10,7 @@ const MyReview = () => {
   useTitle('MyReview')
 //---------------------------fetch data by query-------------------------//
   useEffect(()=>{
-    fetch(`http://localhost:5000/reviewsquery?email=${user?.email}`,
+    fetch(`https://swift-delivery-server.vercel.app/reviewsquery?email=${user?.email}`,
     {
       headers:{
         authorization : ` Bearer ${localStorage.getItem('swift-token')}`
@@ -35,7 +35,7 @@ const MyReview = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm('Are you sure?')
     if(proceed){
-      fetch(`http://localhost:5000/reviews/${id}`,{
+      fetch(`https://swift-delivery-server.vercel.app/reviews/${id}`,{
         method: 'DELETE'
       })
       .then(res=>res.json())

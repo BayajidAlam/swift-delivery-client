@@ -79,20 +79,26 @@ const Header = () => {
         ) : (
          <>
           <Link
-            className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white ml-3"
+            className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white mr-8"
             to="/services"
           >
             Services
           </Link>
-          <Link to='/blogs' className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white ml-3"> Blogs</Link>
+          <Link to='/blogs' className="bg-orange-400 px-3 text-3xl rounded-lg py-1 text-white"> Blogs</Link>
          </>
         )}
+        <Toaster/>
       </div>
+    {
+      user?.email?
       <div className="navbar-end">
-        
-        <button onClick={handleLogOut} className="btn bg-orange-400 border-0">logout</button>
+      <button onClick={handleLogOut} className="btn bg-orange-400 border-0">logout</button>
       </div>
-      <Toaster/>
+      :
+      <>
+     </>
+    }
+      
     </div>
   );
 };

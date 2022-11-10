@@ -1,9 +1,5 @@
 import React, { useContext } from "react";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/Login.jpg";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../Context/AuthProvider";
@@ -31,22 +27,22 @@ const Login = () => {
         const user = result.user;
 
         const currentUser = {
-          email: user.email
-        }
-        
-        // get jwt token 
-        fetch('http://localhost:5000/jwt', {
+          email: user.email,
+        };
+
+        // get jwt token
+        fetch("https://swift-delivery-server.vercel.app/jwt", {
           method: "POST",
           headers: {
-            'content-type': 'application/json'
+            "content-type": "application/json",
           },
-          body:JSON.stringify(currentUser)
+          body: JSON.stringify(currentUser),
         })
-        .then(res=>res.json())
-        .then(data=>{
-          localStorage.setItem('swift-token',data.token)
-        })
-   
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("swift-token", data.token);
+            console.log(data.token);
+          });
         toast.success("User log in successfully!");
         form.reset();
         navigate(from, { replace: true });
@@ -75,7 +71,7 @@ const Login = () => {
   //-----------------------------------//
 
   //-------------------------------//
-  // spinner when loading 
+  // spinner when loading
   if (loading) {
     return (
       <div className="h-[700px]">
@@ -101,7 +97,7 @@ const Login = () => {
       </div>
     );
   }
-//----------------------------------------------------///
+  //----------------------------------------------------///
 
   return (
     <div className="hero  bg-slate-300 my-3 rounded-lg">
