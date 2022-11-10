@@ -3,6 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
 import Review from '../../Components/Review/Review';
 import { AuthContext } from '../../Context/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const ServiceDetails = () => {
 
@@ -10,7 +11,8 @@ const ServiceDetails = () => {
   const { _id,image, name, discription, price} = service
   const { user } = useContext(AuthContext)
   const [ reviews, setReviews ] = useState([])
-  
+  useTitle('ServiceDetails')
+
   const handleAddReview = (event) => {
     event.preventDefault()
     const form = event.target;
@@ -47,6 +49,7 @@ const ServiceDetails = () => {
       if(data.acknowledged){
       toast.success('Review added successfully!');
       form.reset()
+      console.log(data);
       }
     })
   }

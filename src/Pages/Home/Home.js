@@ -3,7 +3,11 @@ import Banner from '../../Components/Banner/Banner';
 import ServiceInHome from './ServiceInHome/ServiceInHome';
 import './Home.css'
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 const Home = () => {
+
+    useTitle('Home')
+    
   return (
     <div>
       <Banner></Banner>

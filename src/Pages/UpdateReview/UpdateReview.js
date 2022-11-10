@@ -1,23 +1,34 @@
 import React from 'react';
 import toast from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const UpdateReview = () => {
   const userReview = useLoaderData()
-  const { _id,reviewerImage,service,review, reviewerName, serviceName, reviewerEmail  } = userReview;
-   console.log(_id,service,reviewerEmail,reviewerImage,reviewerName,serviceName)
+  const { _id,review, reviewerName, serviceName, reviewerEmail  } = userReview;
+  const navigate = useNavigate()
+  useTitle('UpdateReview')
 
   const handleUpdateReview = (event) => {
+   
     event.preventDefault()
     const form = event.target 
-    const newReview = form.review.value
-    const newName = form.name.value
-    
+
+    let newReview = form.review.value
+    if(newReview === ''){
+      newReview = review
+    }
+    let newName = form.name.value
+    if(newName === ''){
+      newName = reviewerName
+    }
+
     const user = {
       newName,
       newReview
     }
-    console.log(user);
+
+    // send new data to server 
     fetch(`http://localhost:5000/update/${_id}`,{
       method: 'PUT',
       headers:{
@@ -29,6 +40,8 @@ const UpdateReview = () => {
     .then(data=>{
       if(data.modifiedCount){
         toast.success('User updated successfully!')
+        form.reset()
+        navigate('/myreview')
       }
       console.log(data);
     })

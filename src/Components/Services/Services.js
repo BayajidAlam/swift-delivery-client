@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import useTitle from '../../hooks/useTitle';
 import Service from '../Service/Service';
 
 
 const Services = () => {
   const [ services, setServices ] = useState([])
+  useTitle('Services')
   useEffect(()=>{
     fetch('http://localhost:5000/services')
     .then(res=>res.json())
     .then(data=>setServices(data))
   },[])
+
   return (
     <div>
       <h2 className='text-5xl text-center font-semibold'>Our Services</h2>

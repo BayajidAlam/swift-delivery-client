@@ -7,7 +7,7 @@ const TableRow = ({ singleReview, handleDelete }) => {
  
   
   const { _id,review, reviewerEmail, reviewerName, reviewerImage, serviceName } = singleReview;
-  console.log(_id)
+  
 
   return (
 

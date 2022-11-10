@@ -1,6 +1,8 @@
 import React from 'react';
 import img from '../../assets/Na_Nov_26.jpg'
+import useTitle from '../../hooks/useTitle';
 const Error404 = () => {
+  useTitle("Error404")
   return (
     <div>
         <img className='h-3/4 w-3/4 mx-auto' src={img} alt="" />
