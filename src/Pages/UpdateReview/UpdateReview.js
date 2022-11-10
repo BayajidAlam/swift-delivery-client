@@ -13,6 +13,7 @@ const UpdateReview = () => {
     event.preventDefault();
     const form = event.target;
 
+    // preventing null  for name and review of user 
     let newReview = form.review.value;
     if (newReview === "") {
       newReview = review;
@@ -27,7 +28,7 @@ const UpdateReview = () => {
       newReview,
     };
 
-    // send new data to server
+    //============= send new data to server ====================//
     fetch(`https://swift-delivery-server.vercel.app/update/${_id}`, {
       method: "PUT",
       headers: {
@@ -46,6 +47,9 @@ const UpdateReview = () => {
       });
   };
 
+    //============= send new data to server ====================//
+
+    
   return (
     <div className="bg-slate-300 rounded-md my-4 pt-32 pb-60">
       <p className="text-center text-3xl py-3">Update review </p>

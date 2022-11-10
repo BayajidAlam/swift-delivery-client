@@ -24,6 +24,7 @@ const ServiceDetails = () => {
     if (userName === null) {
       userName = "User";
     }
+    // organizing review 
     const review = {
       service: _id,
       serviceName: name,

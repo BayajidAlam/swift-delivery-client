@@ -7,6 +7,7 @@ const Header = () => {
 
   const { user, logOutUser } = useContext(AuthContext);
   
+  // -------------log out user on click --------------------//
   const handleLogOut = () => {
     logOutUser()
     .then(()=> {
@@ -18,6 +19,7 @@ const Header = () => {
       toast.error(error.message)
     })
   }
+ // -------------log out user on click --------------------//
 
   return (
     <div className="navbar bg-slate-300 mt-0 rounded">

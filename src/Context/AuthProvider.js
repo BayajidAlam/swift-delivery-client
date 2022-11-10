@@ -28,12 +28,14 @@ const AuthProvider = ({children}) => {
     setLoading(true)
     return signInWithPopup(auth,Provider)
   }
-
+  
+  // log out user 
   const logOutUser = () => {
     setLoading(true)
     return signOut(auth)
   }
 
+  // unmount 
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
       setUser(currentUser)

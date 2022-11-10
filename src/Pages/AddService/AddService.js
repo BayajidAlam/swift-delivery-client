@@ -1,10 +1,11 @@
-import { data } from "autoprefixer";
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import useTitle from "../../hooks/useTitle";
 
 const AddService = () => {
+  // dynamic title 
   useTitle("AddService");
+  // get the time of posting service 
   const date = new Date().toLocaleString();
 
   const handleSubmit = (event) => {
@@ -15,6 +16,7 @@ const AddService = () => {
     const image = form.url.value;
     const discription = form.description.value;
 
+    // post content organization
     const service = {
       image,
       price,
@@ -22,7 +24,8 @@ const AddService = () => {
       discription,
       date,
     };
-
+    
+     //----------------------posting----------------//
     fetch("https://swift-delivery-server.vercel.app/services", {
       method: "POST",
       headers: {
@@ -39,6 +42,8 @@ const AddService = () => {
         }
       });
   };
+ //----------------------posting----------------//
+
 
   return (
     <div className="border p-10 border-violet-300 my-5 rounded-lg w-1/2 mx-auto bg-slate-300">
