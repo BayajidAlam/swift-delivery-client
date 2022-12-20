@@ -7,7 +7,7 @@ const Banner = () => {
       <div className='w-1/2'>
         <p className='text-5xl text-center mt-12 font-bold'>FASTEST</p>
         <p className='text-5xl text-center mt-8 font-bold'>DELIVERY IN</p>
-        <p className='text-5xl text-center mt-8 font-bold'>BANGLADESH</p>
+        <p className='text-5xl text-center mt-8 font-bold'>whole BANGLADESH</p>
       </div>
       <div className='w-1/2'>
           <img className='h-72 mt-4 ml-20 rounded-lg' src={deliveryPic} alt="" />
